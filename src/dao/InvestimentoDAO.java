@@ -16,8 +16,8 @@ public class InvestimentoDAO {
 
     public void registrarInvestimento(int contaId, double valor, String tipo) {
         Random rand = new Random();
-        int id = rand.nextInt(20);
-        String query = "INSERT INTO investimentos (id,conta_id, valor, data, tipo) VALUES (?, ?, ?, ?,?)";
+        int id = rand.nextInt(10000);
+        String query = "INSERT INTO investimentos (id,conta_id, valor, data, tipo) VALUES ( ?,?, ?, ?,?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

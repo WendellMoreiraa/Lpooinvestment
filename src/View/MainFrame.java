@@ -101,6 +101,7 @@ public class MainFrame extends JFrame {
                 try {
                     double valor = Double.parseDouble(valorStr);
                     investimento.investir(valor, tipo);
+                    JOptionPane.showMessageDialog(null,"Investimento de R$" + valor + " no tipo " + tipo + " realizado com sucesso.");
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Valor inválido.");
                 }
