@@ -15,7 +15,7 @@ public class RelatorioInvestimentoDAO {
     public static List<RelatorioInvestimento> getAllInvestimentos() {
         List<RelatorioInvestimento> investimentos = new ArrayList<>();
 
-        String query = "SELECT * FROM relatorios_investimentos";
+        String query = "SELECT * FROM investimentos";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -25,16 +25,17 @@ public class RelatorioInvestimentoDAO {
                 RelatorioInvestimento investimento = new RelatorioInvestimento();
                 investimento.setId(resultSet.getInt("id"));
                 investimento.setContaId(resultSet.getInt("conta_id"));
+                investimento.setValor(resultSet.getInt("valor"));
                 investimento.setData(resultSet.getDate("data"));
-                investimento.setDescricao(resultSet.getString("descricao"));
-
+                investimento.setTipo(resultSet.getString("tipo"));
                 investimentos.add(investimento);
             }
-
+            System.out.println("Total de investimentos recuperados: " + investimentos.size());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return investimentos;
+
     }
 }

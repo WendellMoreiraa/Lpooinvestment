@@ -114,9 +114,11 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 List<RelatorioInvestimento> investimentos = RelatorioInvestimentoDAO.getAllInvestimentos();
                 StringBuilder relatorio = new StringBuilder("Relatório de Investimentos:\n\n");
+
                 for (RelatorioInvestimento inv : investimentos) {
 
-                    relatorio.append("Descrição:").append(inv.getDescricao()).append("\n");
+                    relatorio.append("valor: R$").append(inv.getValor()).append("\n");
+                    relatorio.append("Tipo:").append(inv.getTipo()).append("\n");
                     relatorio.append("Data: ").append(inv.getData()).append("\n\n");
                 }
                 JOptionPane.showMessageDialog(null, relatorio.toString());
